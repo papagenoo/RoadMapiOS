@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XYZToDoItem.h"
 
 @interface XYZAddToDoItemViewController : UIViewController
 
-- (IBAction)restoreDefaults:(id)sender;
+@property XYZToDoItem *toDoItem;
 
 @end

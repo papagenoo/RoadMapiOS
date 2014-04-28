@@ -10,20 +10,21 @@
 
 @interface XYZAddToDoItemViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+
 @end
 
 @implementation XYZAddToDoItemViewController
 
-- (IBAction)restoreDefaults:(id)sender
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    int n = 5;
-    NSNumber *numberObject = [NSNumber numberWithInt:n];
-    int y = [numberObject intValue];
-    NSString *str = @"123";
-    NSString *format = @"%d %@";
-    NSString *anotherString = [NSString stringWithFormat:format, 1, @"String"];
-    NSString *fromCString = [NSString stringWithCString:"A C string" encoding:NSUTF8StringEncoding];
-    NSLog(@"!!");
+    if (sender != self.doneButton) return;
+    if (self.textField.text.length > 0) {
+        self.toDoItem = [[XYZToDoItem alloc] init];
+        self.toDoItem.itemName = self.textField.text;
+        self.toDoItem.completed = NO;
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
